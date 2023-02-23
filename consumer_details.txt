@@ -1,0 +1,14 @@
+1 Palak 30
+2 Mehak 30
+3 riya 25
+4 hina 23
+5 rohan 25
+6 rohit 24
+7 sita 29
+8 hema 28
+9 neha 21
+10 tina 34
+11 gita 42
+12 reeva 0
+13 parmjeet 0
+14 rohan 0

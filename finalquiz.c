@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include"thanks.c"
+#include"user.c"
 
 //user defined functions used......................................................
 int topic();
@@ -29,8 +30,21 @@ void main()
         printf("\n\nNEXT PAGE >> [PRESS \">\"]");
         getch();
         system("cls");
+   //asking if new user or previous
+   int menu;
+   menuagain :
+   printf("Menu\n1.see score\n2.playgame\n\nENTER YOUR CHOICE:");
+   scanf("%d",&menu);
+   printf("\n\nNEXT PAGE >> [PRESS \">\"]");
+   getch();
+    system("cls");
+   if(menu==1)
+   {previoususer();}
+   else if(menu==2){
    //taking user details.......
-    
+    char name[20];
+    printf("Enter your name");
+    scanf("%s",&name);
    // printing rules.........
    system("color 06");
    printf("\n\t########## before starting please see the rules ##########\n");
@@ -40,8 +54,9 @@ void main()
    getch( );
    system("cls");
    //printing questions and finding scores...
+   int scoreget;
    play_again:    //playing again label for goto function
-   questions(topic());
+   scoreget=questions(topic());
    //asking to play again..............
    if(playagain())
    {
@@ -52,11 +67,19 @@ void main()
      Sleep(1500);
      system("cls");
      system ("color 06");
+     newuser(scoreget,name);
+     printf("\n\nNEXT PAGE >> [PRESS \">\"]");
+     Sleep(1000);
+     getch( );
+     system("cls");
      horizontaldiamond();
      printf("\t\t\t\t~~~~~~~~~~~~ THANK YOU ~~~~~~~~~~~~~\t\t\t\t\n");
      horizontaldiamond();
      printf("\n\n\n\n\n");
    }
+   }
+   else{printf("invalid choice");
+   goto menuagain;}
 }
 
 //definition of user defined functions...............................................
@@ -546,7 +569,7 @@ ques[20]="MPLADS fund has been suspended till which year,due to Covid 19 Pandemi
       Sleep(1000);
     }
    }
-return 1;
+return score;
 
 }
 // function to show rules
@@ -561,8 +584,7 @@ void rules(int i)
     printf("\n\n");
 }
 // function to check ans
-int check(char ans,char correct[11],int i, int score)
-{
+int check(char ans,char correct[11],int i, int score){
 if (ans==correct[i])
 {
     system("color 02");
